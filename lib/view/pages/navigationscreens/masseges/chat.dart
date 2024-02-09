@@ -22,6 +22,7 @@ class _ChatState extends State<Chat> {
     chat.add(widget.massage);
   }
 
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,9 +170,11 @@ class _ChatState extends State<Chat> {
                     height: 45,
                     width: 60.w,
                     child: TextFormField(
+                      controller: controller,
                       onFieldSubmitted: (value) {
                         setState(() {
                           chat.add(value);
+                          controller.clear();
                         });
                       },
                       decoration: InputDecoration(

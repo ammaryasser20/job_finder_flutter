@@ -89,15 +89,14 @@ class JobsCubit extends Cubit<JobsState> {
     emit(GetAllApplyJobFromAPI());
   }
 
-  Future<void> getAllApplyJob( User user) async {
+  Future<void> getAllApplyJob(User user) async {
     applyJobsfromDB = [];
     applyJobsfromAPI = [];
     emit(LoadingAllApplyJob());
     MyDataBase dataBase = MyDataBase();
     applyJobsfromDB = await dataBase.getApplyJob();
-    Response response = await DioHelper.getData(
-        url: 'apply/${user.id}',
-        token: user.token);
+    Response response =
+        await DioHelper.getData(url: 'apply/${user.id}', token: user.token);
 
     if (response.data['data'].isNotEmpty) {
       response.data['data'].forEach((v) {
@@ -110,8 +109,10 @@ class JobsCubit extends Cubit<JobsState> {
   }
 
   Future<void> getAllSavingJob(User user) async {
-    Response response = await DioHelper.getData(
-        url: 'favorites', token: user.token);
+    savedJob = [];
+    savedJobsIDs={};
+    Response response =
+        await DioHelper.getData(url: 'favorites', token: user.token);
 
     if (response.data['status']) {
       response.data['data'].forEach((v) {
@@ -124,23 +125,24 @@ class JobsCubit extends Cubit<JobsState> {
   }
 
   Future<void> addJobs(User user) async {
+    jobs = [];
+    recentJob = [];
+    recentJobID = [];
     emit(LoadingAllJob());
-    Response response = await DioHelper.getData(
-        url: 'jobs', token:user.token);
+    Response response = await DioHelper.getData(url: 'jobs', token: user.token);
     response.data['data'].forEach((v) {
       data = Data.fromJson(v);
       jobs.add(Job(status: true, data: data));
     });
     await getAllSavingJob(user);
 
-  await  getAllApplyJob(user);
+    await getAllApplyJob(user);
 
     MyDataBase myDataBase = MyDataBase();
     recentJobID = await myDataBase.getRecentJobs();
     if (recentJobID.isNotEmpty) {
       for (int id in recentJobID) {
-        recentJob.add(await getJobByID(
-            id: id, token: user.token!));
+        recentJob.add(await getJobByID(id: id, token: user.token!));
       }
     }
 
@@ -173,15 +175,12 @@ class JobsCubit extends Cubit<JobsState> {
     return null;
   }
 
-  Future<void> saveingJob(
-      {required int id,  required User user}) async {
+  Future<void> saveingJob({required int id, required User user}) async {
     savedJob = [];
     await DioHelper.postData(
-        url: 'favorites/',
-        token: user.token,
-        data: {"job_id": id});
-    Response responseSaved = await DioHelper.getData(
-        url: 'favorites', token: user.token);
+        url: 'favorites/', token: user.token, data: {"job_id": id});
+    Response responseSaved =
+        await DioHelper.getData(url: 'favorites', token: user.token);
 
     if (responseSaved.data['status']) {
       responseSaved.data['data'].forEach((v) {
@@ -216,7 +215,7 @@ class JobsCubit extends Cubit<JobsState> {
       {required FormData map, required String token}) async {
     Response response =
         await DioHelper.postDataAndFiles(url: 'apply', token: token, data: map);
-  //  print(response.data);
+    //  print(response.data);
     if (response.data['status']) {
       return true;
     }

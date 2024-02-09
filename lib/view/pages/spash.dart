@@ -18,7 +18,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  @override
+
   void didChangeDependencies() async {
  
     super.didChangeDependencies();
@@ -27,6 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
           .getProfile(CashHelper.getString(key: Keys.tokenKey));
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {

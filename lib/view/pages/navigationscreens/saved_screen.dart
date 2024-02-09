@@ -209,6 +209,7 @@ class SavedScreen extends StatelessWidget {
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return Divider(
+                              color: AppTheme.neutralColors[300],
                               indent: 5.w,
                               endIndent: 5.w,
                             );

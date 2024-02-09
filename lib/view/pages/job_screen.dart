@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gp/const.dart';
 import 'package:gp/controller/jobscubit/jobs_cubit.dart';
+import 'package:gp/controller/usercubit/user_cubit.dart';
 import 'package:gp/core/uitlites/app_route.dart';
 import 'package:gp/core/uitlites/app_theme_class.dart';
 import 'package:gp/view/widget/Job_desicription.dart';
@@ -60,7 +61,7 @@ class JobDetail extends StatelessWidget {
                   } else {
                     JobsCubit.get(context).saveingJob(
                         id: JobsCubit.get(context).openJob.data!.id!,
-                        context: context);
+                        user:  UserCubit.get(context).user!);
                   }
                 },
               )

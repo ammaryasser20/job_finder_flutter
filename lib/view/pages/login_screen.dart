@@ -154,7 +154,7 @@ class LoginScreen extends StatelessWidget {
                                       value:
                                           UserCubit.get(context).user!.token!);
                                 }
-
+                  
                                 Navigator.pushReplacementNamed(
                                     context, AppRoute.navigationScreens);
                               } else

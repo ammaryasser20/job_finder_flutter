@@ -45,9 +45,9 @@ class _MyAppState extends State<MyApp> {
           builder: (BuildContext context, Orientation orientation,
               DeviceType deviceType) {
             return MaterialApp(
-               navigatorKey: NavigationService.navigatorKey,
+              navigatorKey: NavigationService.navigatorKey,
               debugShowCheckedModeBanner: false,
-              theme:Themes.lightTheme , //ThemeData(fontFamily: 'SF-Pro',),
+              theme: Themes.lightTheme, //ThemeData(fontFamily: 'SF-Pro',),
               onGenerateRoute: onGenerateRoute,
               initialRoute: AppRoute.splashScreen,
             );
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         ));
   }
 }
-class NavigationService { 
-  static GlobalKey<NavigatorState> navigatorKey = 
-  GlobalKey<NavigatorState>();
+
+class NavigationService {
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }

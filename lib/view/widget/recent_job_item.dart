@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gp/controller/jobscubit/jobs_cubit.dart';
+import 'package:gp/controller/usercubit/user_cubit.dart';
 import 'package:gp/core/uitlites/app_theme_class.dart';
 
 import 'package:gp/models/job.dart';
@@ -60,7 +61,7 @@ class RecentJobItem extends StatelessWidget {
                           .deleteSavedJob(id: job.data!.id!, context: context);
                     } else {
                       JobsCubit.get(context)
-                          .saveingJob(id: job.data!.id!, context: context);
+                          .saveingJob(id: job.data!.id!,user:  UserCubit.get(context).user!);
                     }
                   },
                 );

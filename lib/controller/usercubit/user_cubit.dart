@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gp/const.dart';
 import 'package:gp/core/uitlites/enums.dart';
 import 'package:gp/core/serves/cash_helper.dart';
+import 'package:gp/main.dart';
 import 'package:gp/models/experince_model.dart';
 import 'package:gp/models/message.dart';
 import 'package:gp/models/user.dart';
@@ -16,7 +17,8 @@ part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(UserInitial());
-  static UserCubit get(context) => BlocProvider.of(context);
+  static UserCubit get(context) =>
+      BlocProvider.of(NavigationService.navigatorKey.currentContext!);
   User? user;
   Massage? massage;
   UserInfo? userInfo;

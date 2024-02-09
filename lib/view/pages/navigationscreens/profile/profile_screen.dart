@@ -32,13 +32,14 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () async {
                   UserCubit.get(context).logout();
                   JobsCubit.get(context).clear();
-                  Navigator.pushNamedAndRemoveUntil(
-                      NavigationService.navigatorKey.currentContext!,
-                      AppRoute.loginScreen,
-                      (route) => false);
+
                   MyDataBase dB = MyDataBase();
                   await dB.clear();
                   await CashHelper.logout();
+               await   Navigator.pushNamedAndRemoveUntil(
+                      NavigationService.navigatorKey.currentContext!,
+                      AppRoute.loginScreen,
+                      (route) => false);
                 },
                 child: SvgPicture.asset('assets/images/logout.svg')),
           )

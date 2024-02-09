@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gp/controller/jobscubit/jobs_cubit.dart';
+import 'package:gp/controller/usercubit/user_cubit.dart';
 import 'package:gp/core/uitlites/app_route.dart';
 import 'package:gp/core/uitlites/app_theme_class.dart';
 import 'package:gp/models/job.dart';
@@ -77,7 +78,7 @@ class JobItem extends StatelessWidget {
                             id: job.data!.id!, context: context);
                       } else {
                         JobsCubit.get(context)
-                            .saveingJob(id: job.data!.id!, context: context);
+                            .saveingJob(id: job.data!.id!,user:  UserCubit.get(context).user!);
                       }
                     },
                   )

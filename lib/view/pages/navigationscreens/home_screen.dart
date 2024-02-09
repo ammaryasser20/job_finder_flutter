@@ -35,10 +35,10 @@ class HomeScreen extends StatelessWidget {
             elevation: 0,
             foregroundColor: Colors.amber,
             backgroundColor: Colors.white,
-            child: SvgPicture.asset("assets/images/notification.svg"),
             shape: RoundedRectangleBorder(
                 side: BorderSide(color: AppTheme.neutralColors[300]!),
                 borderRadius: BorderRadius.circular(100)),
+            child: SvgPicture.asset("assets/images/notification.svg"),
           ),
         ),
       ),
@@ -54,8 +54,8 @@ class HomeScreen extends StatelessWidget {
               BlocBuilder<UserCubit, UserState>(
                 builder: (context, state) {
                   if (UserState == LogInLoading ||
-                      UserState == RegisterSuccessful ||
-                      UserState == GetProfileSuccessful) {
+                      UserState == RegisterLoading ||
+                      UserState == GetProfileLoading) {
                     return const CircularProgressIndicator();
                   } else {
                     return Text("Hi, ${UserCubit.get(context).user!.name}👋",
@@ -108,9 +108,15 @@ class HomeScreen extends StatelessWidget {
               ),
               BlocBuilder<JobsCubit, JobsState>(
                 builder: (context, state) {
+                  print(JobsState);
                   if (JobsState == LoadingAllJob ||
+                      JobsState == LoadingAllApplyJob ||
                       JobsState == GetAllApplyJob) {
-                    return const CircularProgressIndicator();
+                    return Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.green,
+                    );
                   } else {
                     return SizedBox(
                       height: 25.h,

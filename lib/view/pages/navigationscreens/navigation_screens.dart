@@ -4,6 +4,7 @@ import 'package:gp/const.dart';
 import 'package:gp/controller/jobscubit/jobs_cubit.dart';
 import 'package:gp/controller/navigationcubit/navigation_cubit.dart';
 import 'package:gp/controller/searchcubit/search_cubit.dart';
+import 'package:gp/controller/usercubit/user_cubit.dart';
 import 'package:gp/core/uitlites/app_theme_class.dart';
 
 class NavigationScreens extends StatefulWidget {
@@ -18,9 +19,10 @@ class _NavigationScreensState extends State<NavigationScreens> {
   void initState() {
     super.initState();
 
-    JobsCubit.get(context).addJobs(context);
+     JobsCubit.get(context).addJobs(UserCubit.get(context).user!);
     SearchCubit.get(context).getAllRecentSearches();
   }
+  
 
   @override
   Widget build(BuildContext context) {

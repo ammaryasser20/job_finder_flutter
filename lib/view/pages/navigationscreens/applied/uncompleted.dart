@@ -86,7 +86,10 @@ class UnCompleted extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          SvgPicture.asset('assets/images/Step${e.step}.svg'),
+                          SvgPicture.asset(
+                            'assets/images/Step${e.step}.svg',
+                            width: 100.w,
+                          ),
                           Divider(
                             color: AppTheme.neutralColors[200],
                             indent: 5.w,

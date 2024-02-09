@@ -62,7 +62,9 @@ class Portfolio extends StatelessWidget {
                         }
                       },
                       child: SvgPicture.asset(
-                          'assets/images/Upload document.svg')),
+                        'assets/images/Upload document.svg',
+                        width: 100.w,
+                      )),
                   const SizedBox(
                     height: 20,
                   ),

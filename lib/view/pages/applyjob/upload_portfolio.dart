@@ -128,6 +128,7 @@ class UploadPortfolio extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 'assets/images/Upload document.svg',
+                width: 100.w,
               ),
             ),
             SizedBox(

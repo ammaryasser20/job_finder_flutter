@@ -69,6 +69,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Image.asset(
                         "assets/images/Background$i.jpg",
+                        width: 100.w,
+                        height: 40.h,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24, left: 24),

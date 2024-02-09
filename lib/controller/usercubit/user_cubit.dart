@@ -165,6 +165,7 @@ class UserCubit extends Cubit<UserState> {
       user = User.login(response.data);
       response = await DioHelper.getData(
           url: 'user/profile/portofolios', token: user!.token);
+          
       print(response.data);
       userInfo = UserInfo.fromJson(response.data);
       emit(LogInSuccessful());

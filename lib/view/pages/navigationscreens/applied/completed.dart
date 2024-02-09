@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gp/controller/jobscubit/jobs_cubit.dart';
 import 'package:gp/core/uitlites/app_route.dart';
 import 'package:gp/core/uitlites/app_theme_class.dart';
@@ -44,7 +45,6 @@ class Completed extends StatelessWidget {
                 ...JobsCubit.get(context).applyJobsfromAPI.map((e) {
                   for (Job damyJob in JobsCubit.get(context).jobs) {
                     if (damyJob.data!.id == e.jobId) {
-                      //     print("aaaaa");
                       return Column(
                         children: [
                           RecentJobItem(
@@ -72,7 +72,29 @@ class Completed extends StatelessWidget {
             ),
           );
         }
-        return Container();
+        return SizedBox(
+            width: 100.w,
+            child: Column(children: [
+              SizedBox(
+                height: 15.h,
+              ),
+              SvgPicture.asset('assets/images/Rejected.svg'),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                'No applications were applied',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              SizedBox(
+                height: 1.h,
+              ),
+              Text(
+                textAlign: TextAlign.center,
+                'If there is an application that is applied',
+                style: Theme.of(context).textTheme.displayLarge,
+              )
+            ]));
       },
     );
   }

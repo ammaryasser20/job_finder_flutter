@@ -45,32 +45,7 @@ class Themes {
             fontSize: AppTheme.displaySmall),
       )
 
-      // iconTheme: const  IconThemeData(
-      //     color:  AppTheme.primaryColor
-      // ),
-      // buttonTheme:const ButtonThemeData(
-      //     buttonColor: AppTheme.primaryColor
-      // ),
-      // scaffoldBackgroundColor: AppTheme.nearlyWhite,
-      // appBarTheme: const AppBarTheme(
-      //   backgroundColor: AppTheme.secondColor,
-      //   systemOverlayStyle:  SystemUiOverlayStyle(
-      //     statusBarColor: AppTheme.primaryColor,
-      //   ),
-      // ),
-      // dialogBackgroundColor: AppTheme.gray,
-      // toggleButtonsTheme: const ToggleButtonsThemeData(
-      //     selectedBorderColor: Colors.transparent,
-      //     borderColor: Colors.transparent,
-      //     fillColor: AppTheme.black
-      // ),
-      // checkboxTheme: CheckboxThemeData(
-      //   checkColor: MaterialStateProperty.all(AppTheme.kPrimaryColor),
-      //   fillColor: MaterialStateProperty.all(AppTheme.textColor),
-      // )
+
       );
 }
 
-Color re() {
-  return Colors.red;
-}

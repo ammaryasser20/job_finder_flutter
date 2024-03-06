@@ -215,7 +215,7 @@ class JobsCubit extends Cubit<JobsState> {
       {required FormData map, required String token}) async {
     Response response =
         await DioHelper.postDataAndFiles(url: 'apply', token: token, data: map);
-
+    //  print(response.data);
     if (response.data['status']) {
       return true;
     }

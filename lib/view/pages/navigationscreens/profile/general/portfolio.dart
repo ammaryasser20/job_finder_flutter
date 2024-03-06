@@ -68,79 +68,87 @@ class Portfolio extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  if (UserCubit.get(context).userInfo != null)
-                    SizedBox(
-                      height: 100.h,
-                      width: 100.w,
-                      child: ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Container(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                width: double.infinity,
-                                height: 12.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                      color: AppTheme.neutralColors[300]!),
-                                ),
-                                child: ListTile(
-                                  leading: SvgPicture.asset(
-                                    'assets/images/cv-upload.svg',
+                  if (UserCubit.get(context).userInfo != null &&
+                      UserCubit.get(context).userInfo!.allInfo!.portfolio !=
+                          null)
+                    if (UserCubit.get(context)
+                        .userInfo!
+                        .allInfo!
+                        .portfolio!
+                        .isNotEmpty)
+                      SizedBox(
+                        height: 100.h,
+                        width: 100.w,
+                        child: ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  width: double.infinity,
+                                  height: 12.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                        color: AppTheme.neutralColors[300]!),
                                   ),
-                                  title: Text(
-                                    basename(
-                                      UserCubit.get(context)
-                                          .userInfo!
-                                          .allInfo!
-                                          .portfolio![index]
-                                          .image!,
+                                  child: ListTile(
+                                    leading: SvgPicture.asset(
+                                      'assets/images/cv-upload.svg',
                                     ),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium!
-                                        .copyWith(
-                                            color: AppTheme.neutralColors[900]),
-                                  ),
-                                  subtitle: Text(
-                                    'must be pdf',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall!
-                                        .copyWith(
-                                            color: AppTheme.neutralColors),
-                                  ),
-                                  trailing: InkWell(
-                                    onTap: () {
-                                      UserCubit.get(context).deletPortofolio(
-                                          id: UserCubit.get(context)
-                                              .userInfo!
-                                              .allInfo!
-                                              .portfolio![index]
-                                              .id!,
-                                          token: UserCubit.get(context)
-                                              .user!
-                                              .token!);
-                                    },
-                                    child: const Icon(
-                                      Icons.highlight_remove_sharp,
-                                      color: AppTheme.dangerColors,
+                                    title: Text(
+                                      basename(
+                                        UserCubit.get(context)
+                                            .userInfo!
+                                            .allInfo!
+                                            .portfolio![index]
+                                            .image!,
+                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium!
+                                          .copyWith(
+                                              color:
+                                                  AppTheme.neutralColors[900]),
                                     ),
-                                  ),
-                                ));
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 3.h,
-                            );
-                          },
-                          itemCount: UserCubit.get(context)
-                              .userInfo!
-                              .allInfo!
-                              .portfolio!
-                              .length),
-                    )
+                                    subtitle: Text(
+                                      'must be pdf',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall!
+                                          .copyWith(
+                                              color: AppTheme.neutralColors),
+                                    ),
+                                    trailing: InkWell(
+                                      onTap: () {
+                                        UserCubit.get(context).deletPortofolio(
+                                            id: UserCubit.get(context)
+                                                .userInfo!
+                                                .allInfo!
+                                                .portfolio![index]
+                                                .id!,
+                                            token: UserCubit.get(context)
+                                                .user!
+                                                .token!);
+                                      },
+                                      child: const Icon(
+                                        Icons.highlight_remove_sharp,
+                                        color: AppTheme.dangerColors,
+                                      ),
+                                    ),
+                                  ));
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(
+                                height: 3.h,
+                              );
+                            },
+                            itemCount: UserCubit.get(context)
+                                .userInfo!
+                                .allInfo!
+                                .portfolio!
+                                .length),
+                      )
                 ],
               ),
             );

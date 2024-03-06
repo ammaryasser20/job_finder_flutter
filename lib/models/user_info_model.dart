@@ -1,18 +1,17 @@
 class UserInfo {
-  bool? status;
+
   AllInfo? allInfo;
 
-  UserInfo({this.status, this.allInfo});
+  UserInfo({ this.allInfo});
 
   UserInfo.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    allInfo =
-        json['data'] != null ? AllInfo.fromJson(json['data']) : null;
+   
+    print(json);
+    allInfo = json['data'] != null ? AllInfo.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['status'] = status;
     if (allInfo != null) {
       data['data'] = allInfo!.toJson();
     }
@@ -27,10 +26,10 @@ class AllInfo {
     this.portfolio,
   });
 
-  AllInfo.fromJson(Map<String, dynamic> json) {
-    if (json['portfolio'] != null) {
+  AllInfo.fromJson(List< dynamic> json) {
+    if (json.isNotEmpty) {
       portfolio = <Portfolio>[];
-      json['portfolio'].forEach((v) {
+      json.forEach((v) {
         portfolio!.add(Portfolio.fromJson(v));
       });
     }

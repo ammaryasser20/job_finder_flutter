@@ -69,7 +69,14 @@ class CompletePortfolio extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  if (UserCubit.get(context).userInfo != null)
+                   if (UserCubit.get(context).userInfo != null &&
+                      UserCubit.get(context).userInfo!.allInfo!.portfolio !=
+                          null)
+                    if (UserCubit.get(context)
+                        .userInfo!
+                        .allInfo!
+                        .portfolio!
+                        .isNotEmpty)
                     SizedBox(
                       height: 100.h,
                       width: 100.w,
